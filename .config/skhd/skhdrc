@@ -1,4 +1,4 @@
-# Open apps
+# Open Terminal
 cmd - return : open -a iTerm
 
 # Rotate Split
@@ -45,6 +45,7 @@ shift + alt - space : yabai -m window --toggle float
 
 # Make fullscreen
 alt - f         : yabai -m window --toggle zoom-fullscreen
+
 
 # Change desktop
 #ctrl - h : yabai -m space --focus 1
