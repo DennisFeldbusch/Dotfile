@@ -1,0 +1,66 @@
+# Open apps
+cmd - return : open -a iTerm
+
+# Rotate Split
+shift + ctrl - a : yabai -m window --toggle split
+
+# Moving windows
+shift + alt - h : yabai -m window --warp west
+shift + alt - j : yabai -m window --warp south
+shift + alt - k : yabai -m window --warp north
+shift + alt - l : yabai -m window --warp east
+
+# Move focus container to workspace
+shift + alt - u : ~/CustomScripts/SwitchSpaces/moveWindowToSpace.sh 
+
+# Resize windows
+ctrl + alt - h : \
+    yabai -m window --resize left:-100:0 ; \
+    yabai -m window --resize right:-100:0
+
+ctrl + alt - j : \
+    yabai -m window --resize bottom:0:100 ; \
+    yabai -m window --resize top:0:100
+
+ctrl + alt - k : \
+    yabai -m window --resize top:0:-100 ; \
+    yabai -m window --resize bottom:0:-100
+
+ctrl + alt - l : \
+    yabai -m window --resize right:100:0 ; \
+    yabai -m window --resize left:100:0
+
+# Float and center window
+shift + alt - c : yabai -m window --toggle float;\
+                yabai -m window --grid 4:4:1:1:2:2
+
+# Set insertion point for focused container
+shift + ctrl + alt - h : yabai -m window --insert west
+shift + ctrl + alt - j : yabai -m window --insert south
+shift + ctrl + alt - k : yabai -m window --insert north
+shift + ctrl + alt - l : yabai -m window --insert east
+
+# Float / Unfloat window
+shift + alt - space : yabai -m window --toggle float
+
+# Make fullscreen
+alt - f         : yabai -m window --toggle zoom-fullscreen
+
+# Change desktop
+#ctrl - h : yabai -m space --focus 1
+#ctrl - j : yabai -m space --focus 2
+#ctrl - k : yabai -m space --focus 3
+#ctrl - l : yabai -m space --focus 4
+#ctrl - ö : yabai -m space --focus 5
+#ctrl - ä : yabai -m space --focus 6
+#ctrl - 7 : yabai -m space --focus 7
+
+# Move Window to next Display
+alt - u : ~/CustomScripts/SwitchSpaces/moveWindowRightAndFollowFocus.sh
+
+# cycle all windows on space backwards by coordinate
+alt - tab : yabai -m window --focus "$(yabai -m query --windows --space | jq -re "[sort_by(.id, .frame) | reverse | .[] | select(.role == \"AXWindow\" and .subrole == \"AXStandardWindow\") | .id] | nth(index($(yabai -m query --windows --window | jq -re ".id")) - 1)")"
+
+# cycle through all visible windows sorted by: coordinates -> display index
+alt + shift - tab : yabai -m window --focus "$(yabai -m query --windows | jq -re "sort_by(.display, .frame.x, .frame.y, .id) | map(select(.visible == 1 and .subrole != \"AXUnknown\")) | reverse | nth(index(map(select(.focused == 1))) - 1).id")"
+

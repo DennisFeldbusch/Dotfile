@@ -1,0 +1,103 @@
+#!/usr/bin/env sh
+
+## Kleine Anleitung, wenn das shuffle-Problem wieder auftaucht
+
+#brew reinstall yabai # already installed with --HEAD
+#brew services stop koekeishiya/formulae/yabai
+#sudo yabai --uninstall-sa # you didn't mention this?
+#sudo yabai --install-sa
+#brew services start koekeishiya/formulae/yabai
+
+
+sudo yabai --load-sa
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+
+
+yabai -m space 1 --label one
+yabai -m space 2 --label two
+yabai -m space 3 --label three
+yabai -m space 4 --label four
+yabai -m space 5 --label five
+yabai -m space 6 --label six
+yabai -m space 7 --label seven
+
+
+# global settings
+# focus window that your mouse hovers on (disabled due to right click bugs)
+yabai -m config focus_follows_mouse          off
+# move mouse to focused window
+yabai -m config mouse_follows_focus          off
+yabai -m config window_placement             second_child
+# floating windows always stay on top
+yabai -m config window_topmost               on
+# enable borders
+yabai -m config window_border                off
+# no clue what this is
+yabai -m config insert_feedback_color        0xffd75f5f
+yabai -m config split_ratio                  0.50
+# don't automatically rebalance windows
+yabai -m config auto_balance                 on
+# swap windows if moved with mouse
+yabai -m config mouse_action1                move
+# resize windows if resized with mouse
+yabai -m config mouse_action2                resize
+yabai -m config mouse_drop_action            swap
+
+# general space settings
+yabai -m config layout                       bsp
+yabai -m config top_padding                  10
+yabai -m config bottom_padding               10
+yabai -m config left_padding                 10
+yabai -m config right_padding                10
+yabai -m config window_gap                   10
+
+# SIP Required
+# prevent border from being under the active window
+yabai -m config window_opacity               on
+yabai -m config active_window_opacity       1.0
+yabai -m config normal_window_opacity       0.95
+yabai -m config window_shadow                on
+yabai -m config window_border                off
+
+# status_bar
+#yabai -m config top-padding                  0
+
+# comes from the sketchybar height // TODO make it dynamically (take height of sketchbar with command)
+yabai -m config external_bar all:25:0
+#yabai -m config status_bar                   on
+#yabai -m config status_bar_space_icon_strip  I II III IV V VI VII VIII IX X
+#yabai -m config status_bar_background_color  0xff0000
+#yabai -m config status_bar_foreground_color  0x90ee90
+
+# IGNORE THESE APPS
+yabai -m rule --add label="Finder" app="^Finder$" manage=off layer=normal
+yabai -m rule --add label="App Store" app="^App Store$" manage=off layer=normal
+yabai -m rule --add label="Spotify" app="^Spotify$" manage=off layer=normal
+yabai -m rule --add app="^Aktivitätsanzeige$" manage=off layer=normal
+yabai -m rule --add app="^Nachrichten$" manage=off layer=normal
+yabai -m rule --add app="^Skype$" manage=off layer=normal
+yabai -m rule --add app="^Rechner$" manage=off layer=normal
+yabai -m rule --add app="^Simulator$" manage=off layer=normal
+yabai -m rule --add label="Stats" app="^Stats$" title="^.*$" manage=off
+yabai -m rule --add label="^Systemeinstellungen$" manage=off
+
+# SEND TO SPACE ONE (1)
+yabai -m rule --add app="^iTerm2$" space=one
+
+# SEND TO SPACE TWO (2)
+yabai -m rule --add app="^Firefox$" space=two
+yabai -m rule --add app="^Google Chrome$" space=two
+yabai -m rule --add app="^Safari$" space=two
+
+# SEND TO SPACE THREE (3)
+yabai -m rule --add app="^Skype$" space=three
+yabai -m rule --add app="^Nachrichten$" space=three
+yabai -m rule --add app="^Mail$" space=three
+yabai -m rule --add app="^Discord$" space=three
+
+
+# SEND TO SPACE FOUR (4)
+yabai -m rule --add app="^Spotify$" space=four
+
+# SEND TO SPACE FIVE (5)
+yabai -m rule --add app="^Code$" space=five

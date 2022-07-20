@@ -1,5 +1,4 @@
 let mapleader = ","
-
 call plug#begin('~/.vim/plugged')
 Plug 'sudar/comments.vim'
 Plug 'gko/vim-coloresque'
