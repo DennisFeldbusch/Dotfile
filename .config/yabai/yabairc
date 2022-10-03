@@ -79,7 +79,7 @@ yabai -m rule --add app="^Skype$" manage=off layer=normal
 yabai -m rule --add app="^Rechner$" manage=off layer=normal
 yabai -m rule --add app="^Simulator$" manage=off layer=normal
 yabai -m rule --add label="Stats" app="^Stats$" title="^.*$" manage=off
-yabai -m rule --add label="^Systemeinstellungen$" manage=off
+yabai -m rule --add app="^System­einstellungen$" sticky=on layer=above manage=off
 
 # SEND TO SPACE ONE (1)
 yabai -m rule --add app="^iTerm2$" space=one
