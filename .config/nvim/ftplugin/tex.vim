@@ -10,7 +10,9 @@ let g:vimtex_view_method = 'skim'
 "let g:vimtex_view_automatic = 0
 "
 "
-map <leader>ll :silent call Tex_RunLaTeX()<cr>
+
+" leader ll to call VimtexCompile
+nnoremap <leader>ll :VimtexCompile<CR>
 
 let g:vimtex_compiler_latexmk = {
             \ 'build_dir' : '.',
@@ -87,3 +89,4 @@ endfunction
 
 au BufRead,BufNewFile *.tex setlocal spell spelllang=de
 set spell spelllang=de
+
