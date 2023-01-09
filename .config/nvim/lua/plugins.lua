@@ -9,7 +9,6 @@ return require('packer').startup(function(use)
 
   use 'sudar/comments.vim'
   use 'gko/vim-coloresque'
-  use 'github/copilot.vim'
   use 'ThePrimeagen/harpoon'
   use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim'
@@ -57,3 +56,5 @@ return require('packer').startup(function(use)
 }
 
 end)
+
+
