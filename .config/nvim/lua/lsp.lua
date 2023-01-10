@@ -1,6 +1,19 @@
 local lsp = require('lsp-zero')
 lsp.preset('recommended')
 
+local cmp = require('cmp')
+local ltex = {
+    filetypes = { "tex", "text" },
+    settings = {
+        ltex = {
+            language = "de-DE",
+            additionalRules = {
+                enablePickyRules = true,
+            },
+        },
+    },
+}
+
 lsp.setup_nvim_cmp({
     sources = {
         {name = 'omni', trigger_characters = {'\\','{'} },
@@ -19,12 +32,21 @@ lsp.setup_nvim_cmp({
         end,
     },
     view = {
-		entries = "native",
-	},
+        entries = "native",
+    },
     sorting = {
-		priority_weight = 2,
-	},
+        priority_weight = 2,
+    },
 
 })
 
+lsp.configure('ltex', ltex)
+
 lsp.setup()
+
+vim.diagnostic.config({
+  virtual_text = false
+})
+
+vim.o.updatetime = 250
+vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
