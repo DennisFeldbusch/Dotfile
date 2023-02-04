@@ -1,6 +1,7 @@
 require('plugins')
 require('keys')
 require('lsp')
+require('treesitter')
 require('telescope').setup{
     defaults = {
         file_ignore_patterns = {"./*.aux","./*.old"},
