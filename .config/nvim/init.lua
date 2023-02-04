@@ -1,6 +1,7 @@
 require('plugins')
 require('keys')
 require('lsp')
+require('treesitter')
 require('telescope').setup{
     defaults = {
         file_ignore_patterns = {"./*.aux","./*.old"},
@@ -43,3 +44,9 @@ vim.o.incsearch = true
 
 -- set nohlsearch
 vim.o.hlsearch = false
+
+-- nerdtree ignore files
+vim.cmd([[
+let NERDTreeIgnore = ['\.out$','\.aux','\.bbl','\.sty','\.blg','\.fls','\.log','\.synctex.gz','\.fdb_latexmk','\.toc','\.run.xml']
+
+]])
