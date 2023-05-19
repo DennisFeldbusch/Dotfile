@@ -2,13 +2,19 @@ require('plugins')
 require('keys')
 require('lsp')
 require('treesitter')
+require('file-browser')
+
 require('telescope').setup{
     defaults = {
         file_ignore_patterns = {"./*.aux","./*.old"},
         sorting_strategy = "ascending",
-    }
+    },
 }
 
+require("mason-tool-installer").setup {
+  auto_update = false,
+  run_on_start = true,
+}
 
 -- set options
 vim.o.syntax = true
@@ -34,10 +40,11 @@ vim.o.ma = true
 vim.o.relativenumber = true
 
 -- set colorscheme
-vim.cmd("colorscheme gruvbox")
+vim.cmd([[colorscheme gruvbox]])
+vim.cmd("set completeopt=menu,menuone,noinsert,noselect")
 
 -- set autoindent
-vim.o.autoindent = true
+--vim.o.autoindent = true
 
 -- set incsearch
 vim.o.incsearch = true
@@ -45,8 +52,7 @@ vim.o.incsearch = true
 -- set nohlsearch
 vim.o.hlsearch = false
 
--- nerdtree ignore files
-vim.cmd([[
-let NERDTreeIgnore = ['\.out$','\.aux','\.bbl','\.sty','\.blg','\.fls','\.log','\.synctex.gz','\.fdb_latexmk','\.toc','\.run.xml']
+vim.g.backup = false
+vim.g.writebackup = false
 
-]])
+vim.g.loaded_python3_provider = 1
