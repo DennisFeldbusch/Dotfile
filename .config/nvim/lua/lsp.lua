@@ -45,6 +45,7 @@ lspkind.init({
 
 local cmp = require('cmp')
 cmp.setup({
+
     sources = {
         {name = 'copilot'},
         {name = 'nvim_lsp'},
@@ -78,11 +79,11 @@ cmp.setup({
 		}),
     },
     view = {
-		entries = "native",
-	},
+        entries = "native",
+    },
     sorting = {
-		priority_weight = 2,
-	},
+        priority_weight = 2,
+    },
 
 })
 
