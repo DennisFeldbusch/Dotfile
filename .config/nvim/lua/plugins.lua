@@ -13,7 +13,9 @@ return require('packer').startup(function(use)
         cmd = "Copilot",
         event = "InsertEnter",
         config = function()
-            require("copilot").setup({})
+            require("copilot").setup({
+                filetypes = { "python", "lua", "go", "rust", "c", "cpp", "javascript", "typescript", "html", "css", "markdown", "latex" },
+            })
         end,
     }
     use {
@@ -24,7 +26,7 @@ return require('packer').startup(function(use)
         end
     }
 
-    use 'ThePrimeagen/harpoon'
+    -- telescope setup
     use 'nvim-lua/plenary.nvim'
     use 'nvim-telescope/telescope.nvim'
     use 'nvim-telescope/telescope-fzy-native.nvim'
@@ -32,11 +34,10 @@ return require('packer').startup(function(use)
         "nvim-telescope/telescope-file-browser.nvim",
         requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
     }
-    use 'morhetz/gruvbox'
-    use 'ryanoasis/vim-devicons'
-    use 'bling/vim-airline'
+    --use 'ryanoasis/vim-devicons'
+
+    -- latex support
     use {'KeitaNakamura/tex-conceal.vim', ft = 'tex'}
-    --use 'honza/vim-snippets'
     use {'lervag/vimtex',  ft = 'tex' }
 
     -- lsp setup
@@ -51,14 +52,22 @@ return require('packer').startup(function(use)
 	use("hrsh7th/cmp-buffer")
 	use("hrsh7th/cmp-path")
     use("onsails/lspkind-nvim")
+    use("hrsh7th/cmp-nvim-lsp-signature-help")
 
+    use {
+        "windwp/nvim-autopairs",
+        config = function() require("nvim-autopairs").setup {} end
+    }
+
+    -- treesitter
     use({
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
 	})
     use {'nvim-treesitter/nvim-treesitter-textobjects'}
-    use {'dstein64/vim-startuptime'}
-    use {'stevearc/profile.nvim'}
+
+    -- colorscheme
+    use 'morhetz/gruvbox'
 
 end)
 

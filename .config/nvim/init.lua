@@ -41,10 +41,11 @@ vim.o.relativenumber = true
 
 -- set colorscheme
 vim.cmd([[colorscheme gruvbox]])
-vim.cmd("set completeopt=menu,menuone,noinsert,noselect")
+vim.cmd [[highlight! link CmpItemMenu DiffText]]
+vim.cmd [[highlight! link CmpItemAbbrMatch Constant]]
 
 -- set autoindent
---vim.o.autoindent = true
+vim.o.autoindent = true
 
 -- set incsearch
 vim.o.incsearch = true
