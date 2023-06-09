@@ -47,6 +47,7 @@ shift + alt - space : yabai -m window --toggle float
 alt - f         : yabai -m window --toggle zoom-fullscreen
 
 
+
 # Change desktop
 #ctrl - h : yabai -m space --focus 1
 #ctrl - j : yabai -m space --focus 2
