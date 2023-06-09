@@ -1,5 +1,14 @@
 local keymappings = require("lsp-keys")
 
+
+require("mason").setup({
+    ui = {
+        icons = {
+            package_installed = "✓",
+        },
+    },
+})
+
 require("mason-tool-installer").setup {
   auto_update = false,
   run_on_start = true,
@@ -44,15 +53,24 @@ lspkind.init({
 })
 
 local cmp = require('cmp')
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+cmp.event:on( "confirm_done", cmp_autopairs.on_confirm_done())
 cmp.setup({
-
+    window = {
+        completion = {
+            winhighlight = "Normal:WildMenu",
+        },
+        documentation = {
+            winhighlight = "Normal:TermCursor,FloatBorder:TermCursor",
+        }
+    },
     sources = {
         {name = 'copilot'},
         {name = 'nvim_lsp'},
+        {name = 'nvim_lsp_signature_help'},
         {name = 'path'},
         {name = 'buffer', keyword_length = 3},
     },
-    --mapping = cmp.mapping.preset.insert({}),
     completion = {
         completeopt = 'menu,menuone,noinsert,noselect',
     },
@@ -68,31 +86,28 @@ cmp.setup({
     }),
     formatting = {
         format = lspkind.cmp_format({
-			mode = "symbol",
 			maxwidth = 50,
-			menu = {
-                nvim_lsp = "Lsp",
-                copilot = "Copilot",
-                path = "Path",
-                buffer = "Buffer",
-			},
 		}),
     },
     view = {
-        entries = "native",
+        entries = "custom",
     },
-    sorting = {
-        priority_weight = 2,
-    },
-
 })
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.offsetEncoding = { "utf-16" }
 
+-- c++
 require("lspconfig").clangd.setup({
     capabilities = capabilities,
     on_attach = function(client, bufnr)
+		keymappings.keys(client, bufnr)
+	end,
+})
+
+-- go
+require("lspconfig").gopls.setup({
+	on_attach = function(client, bufnr)
 		keymappings.keys(client, bufnr)
 	end,
 })
