@@ -111,3 +111,17 @@ require("lspconfig").gopls.setup({
 		keymappings.keys(client, bufnr)
 	end,
 })
+
+--java
+require("lspconfig").jdtls.setup({
+    on_attach = function(client, bufnr)
+        keymappings.keys(client, bufnr)
+    end,
+})
+
+--pyright
+require("lspconfig").pyright.setup({
+    on_attach = function(client, bufnr)
+        keymappings.keys(client, bufnr)
+    end,
+})

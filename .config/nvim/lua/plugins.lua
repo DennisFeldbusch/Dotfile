@@ -34,23 +34,22 @@ return require('packer').startup(function(use)
         "nvim-telescope/telescope-file-browser.nvim",
         requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
     }
-    --use 'ryanoasis/vim-devicons'
 
     -- latex support
     use {'KeitaNakamura/tex-conceal.vim', ft = 'tex'}
     use {'lervag/vimtex',  ft = 'tex' }
 
     -- lsp setup
-	use({ "neovim/nvim-lspconfig" })
-	use({ "williamboman/mason.nvim" })
-	use({ "williamboman/mason-lspconfig.nvim" })
-	use({ "WhoIsSethDaniel/mason-tool-installer.nvim" })
+    use({ "neovim/nvim-lspconfig" })
+    use({ "williamboman/mason.nvim" })
+    use({ "williamboman/mason-lspconfig.nvim" })
+    use({ "WhoIsSethDaniel/mason-tool-installer.nvim" })
 
-	-- auto completion
-	use("hrsh7th/nvim-cmp")
-	use("hrsh7th/cmp-nvim-lsp")
-	use("hrsh7th/cmp-buffer")
-	use("hrsh7th/cmp-path")
+    -- auto completion
+    use("hrsh7th/nvim-cmp")
+    use("hrsh7th/cmp-nvim-lsp")
+    use("hrsh7th/cmp-buffer")
+    use("hrsh7th/cmp-path")
     use("onsails/lspkind-nvim")
     use("hrsh7th/cmp-nvim-lsp-signature-help")
 
@@ -59,15 +58,26 @@ return require('packer').startup(function(use)
         config = function() require("nvim-autopairs").setup {} end
     }
 
-    -- treesitter
-    use({
-		"nvim-treesitter/nvim-treesitter",
-		run = ":TSUpdate",
-	})
-    use {'nvim-treesitter/nvim-treesitter-textobjects'}
 
-    -- colorscheme
-    use 'morhetz/gruvbox'
+    --quickfix
+    use {'kevinhwang91/nvim-bqf', ft = 'qf'}
+
+    -- optional
+    use {'junegunn/fzf', run = function()
+        vim.fn['fzf#install']()
+    end
+}
+
+-- treesitter
+use({
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate",
+})
+use {'nvim-treesitter/nvim-treesitter-textobjects'}
+
+-- colorscheme
+use 'morhetz/gruvbox'
+
 
 end)
 

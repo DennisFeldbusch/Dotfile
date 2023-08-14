@@ -44,6 +44,18 @@ vim.cmd([[colorscheme gruvbox]])
 vim.cmd [[highlight! link CmpItemMenu DiffText]]
 vim.cmd [[highlight! link CmpItemAbbrMatch Constant]]
 
+vim.cmd([[
+hi default link BqfPreviewFloat Normal
+hi default link BqfPreviewBorder FloatBorder
+hi default link BqfPreviewTitle Title
+hi default link BqfPreviewThumb PmenuThumb
+hi default link BqfPreviewSbar PmenuSbar
+hi default link BqfPreviewCursor Cursor
+hi default link BqfPreviewCursorLine CursorLine
+hi default link BqfPreviewRange IncSearch
+hi default link BqfPreviewBufLabel BqfPreviewRange
+]])
+
 -- set autoindent
 vim.o.autoindent = true
 

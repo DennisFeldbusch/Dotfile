@@ -6,13 +6,14 @@ setlocal expandtab
 set conceallevel=2
 let g:tex_conceal='abdmg'
 let g:tex_flavor='latex'
-let g:vimtex_view_method = 'skim'
+let g:vimtex_view_method = 'sioyek'
 "let g:vimtex_view_automatic = 0
 "
 "
 
 " leader ll to call VimtexCompile
 nnoremap <leader>ll :VimtexCompile<CR>
+nnoremap <leader>lv :VimtexView<CR>
 
 let g:vimtex_compiler_latexmk = {
             \ 'build_dir' : '.',
@@ -48,7 +49,6 @@ let g:vimtex_quickfix_ignore_filters = [
             \]
 
 nnoremap <C-p> :call MarkdownClipboardImage()<CR>
-inoremap <C-f> <Esc>: silent exec "!inkscape-figures watch"<CR>: silent exec '.!inkscape-figures create "'.getline('.').'" "'.b:vimtex.root.'/figures/"'<CR><CR>
 
 function! MarkdownClipboardImage() abort
   " Create `img` directory if it doesn't exist
