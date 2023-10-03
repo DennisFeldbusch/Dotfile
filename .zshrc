@@ -1,5 +1,4 @@
-# Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
+if [ "$TMUX" = "" ]; then tmux; fi
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -20,6 +19,10 @@ export EDITOR='vim'
 export ANDROID_HOME=/usr/local/share/android-sdk
 export ANDROID_SDK_ROOT=~/Library/Android/sdk
 export ANDROID_AVD_HOME=~/.android/avd
+export PATH="/usr/local/sbin:$PATH"
+export PKG_CONFIG_PATH=$(brew --prefix)/lib/pkgconfig:/usr/local/opt/girara/lib/pkgconfig
+export LD_LIBRARY_PATH=$(brew --prefix)/lib/pkgconfig:/usr/local/opt/girara/lib/pkgconfig
+
 
  #Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -131,10 +134,13 @@ alias ghidra='/Applications/ghidra_10.0.2_PUBLIC/ghidrarun'
 alias conf='/Users/dennisfeldbusch/CustomScripts/config.sh'
 alias wr='watson report'
 alias wa='watson aggregate'
+alias readelf='/usr/local/bin/readelf.py'
+alias zathura='/usr/local/bin/zathura'
 
 alias pc='~/dev/ProjectCreator/script.sh'
 
 alias revdock='docker run --rm -it -v $PWD:/workdir reveng'
 
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"
+export DBUS_SESSION_BUS_ADDRESS="unix:path=$DBUS_LAUNCHD_SESSION_BUS_SOCKET"
+export DBUS_SESSION_BUS_ADDRESS="unix:path=$DBUS_LAUNCHD_SESSION_BUS_SOCKET"
+bindkey -v
