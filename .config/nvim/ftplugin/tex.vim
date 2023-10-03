@@ -87,5 +87,5 @@ function! MarkdownClipboardImage() abort
   endif
 endfunction
 
-au BufRead,BufNewFile *.tex setlocal spell spelllang=de
-set spell spelllang=de
+au BufRead,BufNewFile *.tex setlocal spell spelllang=en
+set spell spelllang=en

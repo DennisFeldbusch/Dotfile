@@ -41,7 +41,7 @@ vim.o.relativenumber = true
 
 -- set colorscheme
 vim.cmd([[colorscheme gruvbox]])
-vim.cmd [[highlight! link CmpItemMenu DiffText]]
+vim.cmd [[highlight! link CmpItemMenu GruvboxYellow]]
 vim.cmd [[highlight! link CmpItemAbbrMatch Constant]]
 
 vim.cmd([[

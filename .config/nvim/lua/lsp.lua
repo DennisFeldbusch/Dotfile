@@ -68,6 +68,13 @@ cmp.setup({
         {name = 'copilot'},
         {name = 'nvim_lsp'},
         {name = 'nvim_lsp_signature_help'},
+        {name = 'vimtex', option = {
+                info_in_menu = 1,
+                info_in_window = 1,
+                match_against_description = 1,
+                symbols_in_menu = 1,
+            },
+        },
         {name = 'path'},
         {name = 'buffer', keyword_length = 3},
     },
@@ -125,3 +132,4 @@ require("lspconfig").pyright.setup({
         keymappings.keys(client, bufnr)
     end,
 })
+
