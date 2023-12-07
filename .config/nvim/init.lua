@@ -69,3 +69,19 @@ vim.g.backup = false
 vim.g.writebackup = false
 
 vim.g.loaded_python3_provider = 1
+
+vim.opt.completeopt = "menu,menuone,noinsert,noselect"
+
+vim.cmd([[
+au VimEnter * syntax region Statement start='\\ref{' end='}' transparent contains=myStart,myEnd
+au VimEnter * syntax match myStart '\\ref{\ze\w\+' contained conceal cchar=[
+au VimEnter * syntax match myEnd '\(\\ref{\w\+\)\@<=\zs}' contained conceal cchar=]
+
+au VimEnter * hi! link Conceal Statement
+au VimEnter * set conceallevel=2
+]])
+
+
+
+
+

@@ -64,6 +64,7 @@ cmp.setup({
             winhighlight = "Normal:TermCursor,FloatBorder:TermCursor",
         }
     },
+
     sources = {
         {name = 'copilot'},
         {name = 'nvim_lsp'},
@@ -79,7 +80,7 @@ cmp.setup({
         {name = 'buffer', keyword_length = 3},
     },
     completion = {
-        completeopt = 'menu,menuone,noinsert,noselect',
+        completeopt = table.concat(vim.opt.completeopt:get(), ","),
     },
     mapping = cmp.mapping.preset.insert({
         ['<CR>'] = cmp.mapping.confirm({ select = false }),
@@ -126,10 +127,53 @@ require("lspconfig").jdtls.setup({
     end,
 })
 
---pyright
+--python
 require("lspconfig").pyright.setup({
+    on_attach = function(client, bufnr)
+        keymappings.keys(client, bufnr)
+    end,
+    settings = {
+		python = {
+			analysis = {
+				autoSearchPaths = true,
+				diagnosticMode = "workspace",
+				useLibraryCodeForTypes = true,
+			},
+		},
+	},
+
+	flags = {
+		debounce_text_changes = 150,
+	},
+})
+
+--terraform
+require("lspconfig").terraformls.setup({
     on_attach = function(client, bufnr)
         keymappings.keys(client, bufnr)
     end,
 })
 
+-- latex
+require("lspconfig").ltex.setup({
+    settings = {
+        ltex = {
+            enabled = { "latex", "tex", "bib", "markdown", },
+            language = "en-US",
+            diagnosticSeverity = {
+                PASSIVE_VOICE = "warning",
+                default = "information"
+            },
+            sentenceCacheSize = 2000,
+            additionalRules = {
+                enablePickyRules = true,
+            },
+            dictionary = {
+            ["en-US"] = {"fuzzer","fuzzers", "JQF", "bytecode"}
+        }
+    },
+},
+on_attach = function(client, bufnr)
+    keymappings.keys(client, bufnr)
+end,
+})

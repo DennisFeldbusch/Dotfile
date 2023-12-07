@@ -14,6 +14,7 @@ let g:vimtex_view_method = 'sioyek'
 " leader ll to call VimtexCompile
 nnoremap <leader>ll :VimtexCompile<CR>
 nnoremap <leader>lv :VimtexView<CR>
+nnoremap <leader>lt :VimtexTocToggle<CR>
 
 let g:vimtex_compiler_latexmk = {
             \ 'build_dir' : '.',
@@ -22,10 +23,11 @@ let g:vimtex_compiler_latexmk = {
             \ 'executable' : 'latexmk',
             \ 'hooks' : [],
             \ 'options' : [
+            \   '-pdfxe',
+            \   '-pvc',
             \   '-verbose',
-            \   '-file-line-error',
             \   '-synctex=1',
-            \   '-interaction=nonstopmode',
+            \   '-interaction=nonstopmode'
             \ ],
             \}
 
@@ -52,7 +54,7 @@ nnoremap <C-p> :call MarkdownClipboardImage()<CR>
 
 function! MarkdownClipboardImage() abort
   " Create `img` directory if it doesn't exist
-  let img_dir = getcwd() . '/../imgs'
+  let img_dir = getcwd() . '/imgs'
   if !isdirectory(img_dir)
     silent call mkdir(img_dir)
   endif

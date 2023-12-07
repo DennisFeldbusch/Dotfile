@@ -64,6 +64,8 @@ return require('packer').startup(function(use)
     --quickfix
     use {'kevinhwang91/nvim-bqf', ft = 'qf'}
 
+    use { 'vigoux/ltex-ls.nvim' }
+
     -- optional
     use {'junegunn/fzf', run = function()
         vim.fn['fzf#install']()
@@ -79,7 +81,6 @@ use {'nvim-treesitter/nvim-treesitter-textobjects'}
 
 -- colorscheme
 use 'morhetz/gruvbox'
-
 
 end)
 
