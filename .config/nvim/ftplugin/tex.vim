@@ -29,6 +29,16 @@ let g:vimtex_compiler_latexmk = {
     \ ],
     \}
 
+" necessary settings for externalizing tikz: 
+"
+" \usepackage{luatex85,shellesc}
+" \usepackage{pgfplots}
+" \usepgfplotslibrary{external}
+" \tikzset{
+"     external/system call={pdflatex \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode -jobname "\image" "\texsource"}}
+" \tikzexternalize[prefix=figures/]
+
+
 
 let g:vimtex_quickfix_open_on_warning = 0
 
