@@ -6,7 +6,8 @@ setlocal expandtab
 set conceallevel=2
 let g:tex_conceal='abdmg'
 let g:tex_flavor='latex'
-let g:vimtex_view_method = 'sioyek'
+"let g:vimtex_view_method = 'skim'
+let g:vimtex_view_general_viewer = '/Applications/sioyek.app/Contents/MacOS//sioyek'
 "let g:vimtex_view_automatic = 0
 "
 "
@@ -17,30 +18,17 @@ nnoremap <leader>lv :VimtexView<CR>
 nnoremap <leader>lt :VimtexTocToggle<CR>
 
 let g:vimtex_compiler_latexmk = {
-            \ 'build_dir' : '.',
-            \ 'callback' : 1,
-            \ 'continuous' : 1,
-            \ 'executable' : 'latexmk',
-            \ 'hooks' : [],
-            \ 'options' : [
-            \   '-pdfxe',
-            \   '-pvc',
-            \   '-verbose',
-            \   '-synctex=1',
-            \   '-interaction=nonstopmode'
-            \ ],
-            \}
+    \ 'options' : [
+    \   '-pdf',
+    \   '-shell-escape',
+    \   '-verbose',
+    \   '-file-line-error',
+    \   '-synctex=1',
+    \   '-interaction=nonstopmode',
+    \   '-enable-write18',
+    \ ],
+    \}
 
-let g:vimtex_compiler_latexmk_engines = {
-            \ '_'                : '-lualatex',
-            \ 'pdflatex'         : '-pdf',
-            \ 'dvipdfex'         : '-pdfdvi',
-            \ 'lualatex'         : '-lualatex',
-            \ 'xelatex'          : '-xelatex',
-            \ 'context (pdftex)' : '-pdf -pdflatex=texexec',
-            \ 'context (luatex)' : '-pdf -pdflatex=context',
-            \ 'context (xetex)'  : '-pdf -pdflatex=''texexec --xtx''',
-            \}
 
 let g:vimtex_quickfix_open_on_warning = 0
 

@@ -169,7 +169,7 @@ require("lspconfig").ltex.setup({
                 enablePickyRules = true,
             },
             dictionary = {
-            ["en-US"] = {"fuzzer","fuzzers", "JQF", "bytecode"}
+            ["en-US"] = {"fuzzer","fuzzers", "JQF", "bytecode", "atip", "GAFuzz"}
         }
     },
 },

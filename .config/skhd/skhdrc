@@ -61,7 +61,7 @@ alt - f         : yabai -m window --toggle zoom-fullscreen
 alt - u : ~/CustomScripts/SwitchSpaces/moveWindowRightAndFollowFocus.sh
 
 # cycle all windows on space backwards by coordinate
-alt - tab : yabai -m window --focus "$(yabai -m query --windows --space | jq -re "[sort_by(.id, .frame) | reverse | .[] | select(.role == \"AXWindow\" and .subrole == \"AXStandardWindow\") | .id] | nth(index($(yabai -m query --windows --window | jq -re ".id")) - 1)")"
+alt - tab : yabai -m window --focus "$(yabai -m query --windows --space | jq -re "[sort_by(.id, .frame) | reverse | .[] | select(.role == \"AXWindow\" and (.subrole == \"AXStandardWindow\" or .subrole == \"AXDialog\")) | .id] | nth(index($(yabai -m query --windows --window | jq -re ".id")) - 1)")"
 
 # cycle through all visible windows sorted by: coordinates -> display index
 alt + shift - tab : yabai -m window --focus "$(yabai -m query --windows | jq -re "sort_by(.display, .frame.x, .frame.y, .id) | map(select(.visible == 1 and .subrole != \"AXUnknown\")) | reverse | nth(index(map(select(.focused == 1))) - 1).id")"
